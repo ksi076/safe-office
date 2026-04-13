@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Safe Office - IoT 기반 사무실 안전 관리 시스템
+=======
+# Safe Office
+>>>>>>> 9b9360d7e06843550f78da40b61236eb6b005ce9
 
 ESP8266, STM32F4, 그리고 YOLOv8 객체 감지를 활용한 자동화된 사무실 환경 모니터링 및 제어 시스템입니다.
 
@@ -34,7 +38,7 @@ Safe_Office/
 ### Hardware
 - STM32F411xE (Cortex-M4)
 - ESP8266 WiFi Module
-- [기타 하드웨어 명시]
+- 라즈베리파이5
 
 ### Software
 - **ESP**: Arduino IDE with ESP8266 Board Package
