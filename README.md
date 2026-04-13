@@ -1,27 +1,32 @@
-# Cortex Project
+# Safe Office - IoT 기반 사무실 안전 관리 시스템
 
-[프로젝트에 대한 한 줄 설명을 여기에 작성하세요.]
+ESP8266, STM32F4, 그리고 YOLOv8 객체 감지를 활용한 자동화된 사무실 환경 모니터링 및 제어 시스템입니다.
 
 ## 📋 개요
 
-프로젝트의 목적과 전체 구조를 설명합니다.
+YOLO 기반의 실시간 객체 감지로 사무실 환경을 모니터링하고, STM32 미니컨트롤러를 통해 문, 가스 밸브, LED 등을 자동으로 제어합니다. ESP8266은 WiFi 통신을 담당합니다.
 
 ## 🏗️ 프로젝트 구조
 
 ```
-Cortex-project/
-├── esp/              # ESP8266 WiFi 모듈
-│   └── esp.ino      # Arduino 스케치
-├── server/          # Python Flask 서버
-│   └── server.py    # YOLO 객체 감지 및 이미지 처리
-├── stm32/           # STM32F4 임베디드 시스템
-│   ├── main.c       # 메인 프로그램
+Safe_Office/
+├── esp/              # WiFi 모듈 (ESP8266)
+│   └── esp.ino
+├── server/           # YOLO 객체 감지 서버
+│   ├── server.py
+│   └── requirements.txt
+├── stm32/            # 임베디드 제어 (STM32F411xE)
+│   ├── main.c
 │   ├── device_driver.h
-│   ├── Makefile     # 빌드 설정
-│   └── [기타 드라이버 파일들]
-├── .gitignore
-├── LICENSE          # MIT License
-└── README.md        # 이 파일
+│   ├── Makefile
+│   ├── firewall_stepper.c/h
+│   ├── gas_fan.c/h
+│   ├── servo.c/h
+│   └── [기타 드라이버 파일]
+├── training/         # YOLOv8 모델 훈련
+│   └── yolo_train.py
+├── LICENSE
+└── README.md
 ```
 
 ## ⚙️ 시스템 요구사항
@@ -85,7 +90,28 @@ CAPTURE  → 카메라 신호 요청
 ```
 
 ### ESP8266 → Server
+```YOLOv8 모델 훈련
+
+`training/yolo_train.py`에서 커스텀 YOLO 모델을 훈련할 수 있습니다.
+
+```bash
+cd training
+python yolo_train.py
 ```
+
+**훈련 설정:**
+- Model: YOLOv8s
+- Epochs: 500
+- Image Size: 320x320
+- Batch Size: 32
+- Optimizer: AdamW
+- 증강: Flip, Rotation, Mosaic, Mixup
+
+**출력:**
+- 훈련된 모델: `runs/detect/train/weights/best.pt`
+- 검증 메트릭: Precision, Recall, mAP50, mAP50-95
+
+## 🔧 
 GET /capture  → 감지된 객체 개수 반환
 GET /count    → 마지막 감지 결과 반환
 ```
@@ -115,14 +141,5 @@ MODEL_PATH = "best.pt"  # YOLOv8 가중치 파일
 
 이 프로젝트는 [MIT License](LICENSE) 하에 배포됩니다.
 
-## 👥 기여
-
-풀 리퀘스트는 언제나 환영합니다!
-
-## 📧 문의
-
-[이메일 또는 연락처]
-
----
 
 **최종 업데이트**: 2026년 4월
