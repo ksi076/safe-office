@@ -24,7 +24,17 @@ YOLO 기반의 실시간 객체 감지로 인가된 사용자를 인식하고, S
 
 ## 플로우차트
 
-![System Architecture](./docs/images/pipeline.png)
+![System Architecture](./docs/images/flow1.png)
+
+![System Architecture](./docs/images/flow2.png)
+
+![System Architecture](./docs/images/flow3.png)
+
+![System Architecture](./docs/images/flow_idle.png)
+
+![System Architecture](./docs/images/flow_door.png)
+
+![System Architecture](./docs/images/flow_em.png)
 
 ---
 
@@ -144,7 +154,7 @@ MODEL_PATH = "best.pt"  # YOLOv8 가중치 파일
 
 ## 프로토타입 및 시연 영상
 
-![System Architecture](./docs/images/prototype.png)
+https://youtu.be/J2NhM7mqCp0
 
 
 
@@ -200,4 +210,4 @@ MODEL_PATH = "best.pt"  # YOLOv8 가중치 파일
 이 프로젝트는 [MIT License](LICENSE) 하에 배포됩니다.
 
 
-**최종 업데이트**: 2026년 4월
+**최종 업데이트**: 2026년 4월 14일 
