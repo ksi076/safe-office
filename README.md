@@ -144,7 +144,7 @@ MODEL_PATH = "best.pt"  # YOLOv8 가중치 파일
 
 ## 프로토타입 및 시연 영상
 
-![System Architecture](./docs/images/prototype.png)
+https://youtu.be/J2NhM7mqCp0
 
 
 
