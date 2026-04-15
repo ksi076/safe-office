@@ -202,7 +202,7 @@ https://youtu.be/J2NhM7mqCp0
 
 ## ⚠️ 문제 해결 과정 (Trouble Shooting)
 
-### 전송 오류 문제
+### 📡 전송 오류 문제
 
 
 ![트러블슈팅](docs/images/trouble1.png)
@@ -211,14 +211,14 @@ https://youtu.be/J2NhM7mqCp0
 - **문제:** ESP32 <-> STM32 간 UART 통신 시 전송 오류 문제  
 - **해결:** ESP32의 UOT, UOR 대신 새로운 GPIO 할당 
 
-### 비정상 센서 값 출력
+### 📉 비정상 센서 값 출력
 
 ![트러블슈팅2](docs/images/trouble2.png)
 
 - **문제:** 보드 첫 전원 인가 시 비정상적인 센서 값 출력
 - **해결:** 초기 상태 확립 이후 시스템 활성화  
 
-### 사람을 인식하지 못하는 문제
+### 👤 사람을 인식하지 못하는 문제
 
 ![트러블슈팅3](docs/images/trouble3.png)
 
