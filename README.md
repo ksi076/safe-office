@@ -1,4 +1,4 @@
-# Safe Office
+# 🛡️🏢 Safe Office
 
 ESP8266, STM32F4, 그리고 YOLOv8 객체 감지를 활용한 자동화된 사무실 환경 모니터링 및 제어 시스템입니다.
 
@@ -8,21 +8,72 @@ YOLO 기반의 실시간 객체 감지로 인가된 사용자를 인식하고, S
 
 ---
 
-## 프로젝트 정보
+## 🛠 기술 스택
+
+| 기술 | 설명 |
+|------|------|
+| Python | 학습코드 작성 및 추론결과 전송 |
+| YOLOv8 | person객체 추론 |
+| STM32-F411xE(Cortex-M4) | 메인보드로 사용 |
+| Raspberry Pi5 | 추론 및 ESP8266와 통신 (서버역할) |
+| ESP8266 | STM32-F411xE 보드와 통신 |
+| PILOMAX USB 웹캠| person객체 인식 |
+| SG90 | 서보모터로 사용 |
+| 28BYJ-48 | 스텝모터로 사용 |
+| HC-SR501 | PIR모션감지센서로 사용 |
+| MQ-2 Gas Sensor | 가스센서로 사용 |
+| CP2102 | 외부전압공급으로 사용 |
+| L293D Dual Motor Driver IC | DC모터 드라이버로 사용 |
+
+
+
+
+
+
+---
+
+## 📝 프로젝트 정보
 
 - **프로젝트 기간:** 2026.04.03 ~ 2026.04.13
 - **프로젝트 목표:** IoT 기반 사무실 안전 관리 시스템 구현
 
 ---
 
-## 회로도
+## 🧠 시스템 구성도
+
+![시스템 구성도](docs/images/시스템구성도.png)
+
+
+---
+
+##  📷  프로토타입 사진
+
+<div>
+ <img src="docs/images/prototype.png" width="580" height="500" align="top">
+ <img src="docs/images/추론.png" width="250" height="480" align="top">
+</div>
+
+---
+
+
+## 🔌 회로도
 
 ![System Architecture](./docs/images/system.png)
 
 
 ---
 
-## 플로우차트
+
+## 🔧 하드웨어 핀맵
+시스템에 사용된 센서, 모터, LED 및 통신 핀의 GPIO 매핑 정보이다.
+![map](./docs/images/매핑.PNG)
+
+
+
+
+---
+
+## 🔄 플로우차트
 
 ![System Architecture](./docs/images/flow1.png)
 
@@ -152,15 +203,41 @@ MODEL_PATH = "best.pt"  # YOLOv8 가중치 파일
 
 ---
 
-## 프로토타입 및 시연 영상
+## 🎬 프로토타입 및 시연 영상
 
 https://youtu.be/J2NhM7mqCp0
 
+---
+
+## ⚠️ 문제 해결 과정 (Trouble Shooting)
+
+### 📡 전송 오류 문제
+
+
+![트러블슈팅](docs/images/trouble1.png)
+
+
+- **문제:** ESP8266 <-> STM32 간 UART 통신 시 전송 오류 문제  
+- **해결:** ESP8266의 UOT, UOR 대신 새로운 GPIO 할당 
+
+### 📉 비정상 센서 값 출력
+
+![트러블슈팅2](docs/images/trouble2.png)
+
+- **문제:** 보드 첫 전원 인가 시 비정상적인 센서 값 출력
+- **해결:** 초기 상태 확립 이후 시스템 활성화  
+
+### 👤 사람을 인식하지 못하는 문제
+
+![트러블슈팅3](docs/images/trouble3.png)
+
+- **문제:** 모형 통합 이후 센서에서 의도하지 않은 값이 출력  
+- **해결:** 케이블 연결 부분 절연처리, 재정리 이후 합선 문제 해결
 
 
 ---
 
-## 팀원 소개
+## 👥 팀원 소개
 
 <table>
   <tr>
